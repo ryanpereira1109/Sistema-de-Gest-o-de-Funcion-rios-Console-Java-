@@ -36,4 +36,10 @@ public class FuncionarioCLT extends Funcionario {
         
     }
     
+    @Override
+    public String getTipo() {
+        return "CLT";
+        
+    }
+    
 }

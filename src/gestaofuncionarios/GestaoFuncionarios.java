@@ -8,17 +8,27 @@ public class GestaoFuncionarios {
     
     public static void main(String[] args) {
         
-        Funcionario f;
-        ArrayList<Funcionario> listaFuncionario = new ArrayList<>();
-        Scanner leia = new Scanner(System.in);
+         Scanner leia = new Scanner(System.in);
+         int escolha;        Funcionario f;
+         ArrayList<Funcionario> listaFuncionario = new ArrayList<>();
+        
+        
+       
+            
+        do  {  
+        mostrarMenu();
+        escolha = leia.nextInt();
+        leia.nextLine();
+
+        switch (escolha) {
+            case 1: 
         System.out.println("Digite seu nome: ");
         String nome = leia.nextLine();
         System.out.println("Digite seu cpf: ");
         String cpf = leia.nextLine();
         System.out.println("CLT ou PJ?: ");
         String tipo = leia.nextLine();
-        System.out.println("Digite seu salario: ");
-        Double salario = leia.nextDouble();
+ 
         
         switch(tipo) {
             case "PJ":
@@ -54,8 +64,31 @@ public class GestaoFuncionarios {
                 break;
                 
         }
+          break;
+                
+            case 2:
+                System.out.println("--- Lista de Funcionários ---");
+               for (Funcionario fun : listaFuncionario) {
+                System.out.println("Nome: " + fun.getNome() + " | CPF: " + fun.getCpf() + " | Tipo: " + fun.getTipo() + " | Salario: " + fun.calcularPagamento());
+            }
+                break;
+                
+            case 3:
+               System.out.println("--- encerrando programa ---"); 
+               break;
+                
+        }
         
-        
+        } while(escolha < 4 && escolha != 3);
     }
     
+    
+        public static void mostrarMenu() {
+        System.out.println("1- Cadastrar funcionários");
+        System.out.println("2- Listar funcionários");
+        System.out.println("3- Sair");
+ }
+        
+        
 }
+    

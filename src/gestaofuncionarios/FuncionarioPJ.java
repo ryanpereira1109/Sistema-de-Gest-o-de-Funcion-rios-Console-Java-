@@ -37,4 +37,10 @@ public class FuncionarioPJ extends Funcionario {
        return valorHora * horasTrabalhadas;
     }
     
+        @Override
+    public String getTipo() {
+        return "PJ";
+        
+    }
+    
 }

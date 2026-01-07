@@ -38,7 +38,7 @@ public abstract class Funcionario {
     }
     
     public abstract double calcularPagamento();
-        
+    public abstract String getTipo();    
     
     
 }
