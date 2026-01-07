@@ -12,7 +12,7 @@ public class GestaoFuncionarios {
          int escolha;       
          ArrayList<Funcionario> listaFuncionario = new ArrayList<>();
            
-        do  {  
+         do  {  
            mostrarMenu();
            escolha = leia.nextInt();
            leia.nextLine();
@@ -49,6 +49,21 @@ public class GestaoFuncionarios {
              System.out.println("Digite seu cpf: ");
              String cpf = leia.nextLine();
 
+             Funcionario f = criarFuncionario(leia, nome, cpf);
+             if (f != null) {
+                lista.add(f);
+              }
+     
+              }   
+     
+          public static void listarFuncionario(ArrayList<Funcionario> lista) {
+                System.out.println("--- Lista de Funcionários ---");
+                for (Funcionario fun : lista) {
+                System.out.println("Nome: " + fun.getNome() + " | CPF: " + fun.getCpf() + " | Tipo: " + fun.getTipo() + " | Salario: " + fun.calcularPagamento());
+            }
+          }
+          
+          private static Funcionario criarFuncionario( Scanner leia, String nome, String cpf ) {
              System.out.println("CLT ou PJ?: ");
              String tipo = leia.nextLine().toUpperCase();
 
@@ -61,9 +76,9 @@ public class GestaoFuncionarios {
                  Double horasTrabalhadas = leia.nextDouble();
                  leia.nextLine();
 
-                 Funcionario f = new FuncionarioPJ(nome, cpf, valorHora, horasTrabalhadas);
-                 lista.add(f);
-                 break;
+                 return  new FuncionarioPJ(nome, cpf, valorHora, horasTrabalhadas);
+                 
+                
 
             case "CLT":
                  System.out.println("Digite o salario base: ");
@@ -71,18 +86,17 @@ public class GestaoFuncionarios {
                  System.out.println("Digite o desconto: ");
                  Double desconto = leia.nextDouble();
 
-                 Funcionario f2 = new FuncionarioCLT(nome, cpf, salarioBase, desconto);
-                 lista.add(f2);
-                 break;
+                 return  new FuncionarioCLT(nome, cpf, salarioBase, desconto);
+                 
+            
+            default:
+              System.out.println("Tipo inválido.");
+                   return null;
+                 
+                
                 }
-     
-              }   
-     
-          public static void listarFuncionario(ArrayList<Funcionario> lista) {
-                System.out.println("--- Lista de Funcionários ---");
-                for (Funcionario fun : lista) {
-                System.out.println("Nome: " + fun.getNome() + " | CPF: " + fun.getCpf() + " | Tipo: " + fun.getTipo() + " | Salario: " + fun.calcularPagamento());
-            }
-         }
+             
+
+          } 
 }
-    
+
